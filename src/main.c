@@ -4,6 +4,7 @@
 #include "queue.h"
 #include "stack.h"
 #include "trie.h"
+#include "bst.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -139,6 +140,28 @@ void test_trie() {
     destroy_trie(trie);
 }
 
+void test_bst() {
+    printf("\n---------Binary Search Tree--------\n");
+    Bst* bst = create_bst();
+    printf("Tree: ");
+    insert_bst(bst, 2);
+    insert_bst(bst, 1);
+    insert_bst(bst, 3);
+    insert_bst(bst, 4);
+    print_bst(bst);
+
+    printf("\n");
+
+    remove_bst(bst, 2);
+    remove_bst(bst, 1);
+    printf("Tree: ");
+    print_bst(bst);
+
+    printf("%d\n", search_bst(bst, 10));
+
+    destroy_bst(bst);
+}
+
 int main() {
     test_list();
     test_deque();
@@ -146,6 +169,7 @@ int main() {
     test_queue();
     test_stack();
     test_trie();
+    test_bst();
 
     return 0;
 }

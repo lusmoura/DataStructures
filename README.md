@@ -6,3 +6,4 @@
 - Stack
 - Pair
 - Trie
+- Binary Search Tree

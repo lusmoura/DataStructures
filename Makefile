@@ -19,5 +19,8 @@ pair:
 trie:
 	gcc src/trie.c src/main.c -I include/ -o main -g -Wall
 
+bst:
+	gcc src/bst.c src/main.c -I include/ -o main -g -Wall
+
 run:
 	./main
