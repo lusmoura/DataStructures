@@ -7,3 +7,4 @@
 - Pair
 - Trie
 - Binary Search Tree
+- AVL
