@@ -1,4 +1,5 @@
 #include "bst.h"
+#include "utils.h"
 #include <stdlib.h>
 
 int amount_of_children(BstNode* node) {

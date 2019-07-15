@@ -6,6 +6,7 @@
 #include "trie.h"
 #include "bst.h"
 #include "avl.h"
+#include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
 

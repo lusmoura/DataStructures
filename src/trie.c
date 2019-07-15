@@ -2,14 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-int min(int a, int b) {
-	return a > b ? b : a;
-}
-
-int max(int a, int b) {
-	return a < b ? b : a;
-}
+#include "utils.h"
 
 bool is_valid_letter(char letter) {
 	return ((letter >= 'a' && letter <= 'z') || (letter >= 'A' && letter <= 'Z'));

@@ -1,4 +1,5 @@
 #include "deque.h"
+#include "utils.h"
 
 Deque* create_deque(size_t elemSize) {
     return create_list(elemSize);

@@ -1,14 +1,7 @@
 #include "avl.h"
+#include "utils.h"
 #include <stdlib.h>
 #include <stdio.h>
-
-int max_avl(int a, int b) {
-    return (a > b) ? a : b;
-}
-
-int abs(int a) {
-    return a > 0 ? a : -a;
-}
 
 int amount_of_chlidren(AvlNode* node) {
     return (node->left != NULL)  + (node->right != NULL);
@@ -49,8 +42,8 @@ AvlNode* left_rotation(AvlNode* node) {
     node->right = newRoot->left;
     newRoot->left = node;
 
-    node->height = 1 + max_avl(get_height(node->left), get_height(node->right));
-    newRoot->height = 1 + max_avl(get_height(newRoot->left), get_height(newRoot->right));
+    node->height = 1 + max(get_height(node->left), get_height(node->right));
+    newRoot->height = 1 + max(get_height(newRoot->left), get_height(newRoot->right));
 
     return newRoot;
 }
@@ -60,8 +53,8 @@ AvlNode* right_rotation(AvlNode* node) {
     node->left = newRoot->right;
     newRoot->right = node;
 
-    node->height = 1 + max_avl(get_height(node->left), get_height(node->right));
-    newRoot->height = 1 + max_avl(get_height(newRoot->left), get_height(newRoot->right));
+    node->height = 1 + max(get_height(node->left), get_height(node->right));
+    newRoot->height = 1 + max(get_height(newRoot->left), get_height(newRoot->right));
 
     return newRoot;
 }
@@ -95,7 +88,7 @@ AvlNode* insert_node_avl(AvlNode* node, elem x, bool* erro) {
         return node;
     }
 
-    node->height = 1 + max_avl(get_height(node->left), get_height(node->right));
+    node->height = 1 + max(get_height(node->left), get_height(node->right));
     int balanceFactor = get_balance_factor(node);
     if (abs(balanceFactor) > 1)  return bring_balance(node);
 
@@ -140,7 +133,7 @@ AvlNode* remove_node_avl(AvlNode* node, elem x, bool* erro) {
         }
     }
 
-    node->height = 1 + max_avl(get_height(node->left), get_height(node->right));
+    node->height = 1 + max(get_height(node->left), get_height(node->right));
     int balanceFactor = get_balance_factor(node);
     if (abs(balanceFactor) > 1)  return bring_balance(node);
 

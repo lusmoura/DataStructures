@@ -1,4 +1,5 @@
 #include "queue.h"
+#include "utils.h"
 
 Queue* create_queue(size_t elemSize) {
     return create_list(elemSize);

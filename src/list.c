@@ -1,6 +1,7 @@
 #include "list.h"
 #include <stdlib.h>
 #include <string.h>
+#include "utils.h"
 
 void* front_list(List* list) {
     return list == NULL ? NULL : list->begin->content;

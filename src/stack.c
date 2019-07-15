@@ -1,4 +1,5 @@
 #include "stack.h"
+#include "utils.h"
 
 Stack* create_stack(size_t elemSize) {
     return create_list(elemSize);
