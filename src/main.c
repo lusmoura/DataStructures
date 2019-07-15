@@ -5,6 +5,7 @@
 #include "stack.h"
 #include "trie.h"
 #include "bst.h"
+#include "avl.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -162,6 +163,25 @@ void test_bst() {
     destroy_bst(bst);
 }
 
+void test_avl() {
+    printf("\n---------AVL--------\n");
+    Avl* avl = create_avl();
+    insert_avl(avl, 1);
+    insert_avl(avl, 2);
+    insert_avl(avl, 3);
+    insert_avl(avl, 4);
+    printf("Tree: ");
+    print_avl(avl);
+
+    remove_avl(avl, 2);
+    printf("Tree: ");
+    print_avl(avl);
+
+    printf("%d\n", search_avl(avl, 1));
+
+    destroy_avl(avl);
+}
+
 int main() {
     test_list();
     test_deque();
@@ -170,6 +190,7 @@ int main() {
     test_stack();
     test_trie();
     test_bst();
+    test_avl();
 
     return 0;
 }

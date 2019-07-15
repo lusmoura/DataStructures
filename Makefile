@@ -22,5 +22,8 @@ trie:
 bst:
 	gcc src/bst.c src/main.c -I include/ -o main -g -Wall
 
+avl:
+	gcc src/avl.c src/main.c -I include/ -o main -g -Wall
+
 run:
 	./main
