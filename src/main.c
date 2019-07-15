@@ -148,6 +148,7 @@ void test_bst() {
     printf("Tree: ");
     insert_bst(bst, 2);
     insert_bst(bst, 1);
+    insert_bst(bst, 1);
     insert_bst(bst, 3);
     insert_bst(bst, 4);
     print_bst(bst);
@@ -167,6 +168,7 @@ void test_bst() {
 void test_avl() {
     printf("\n---------AVL--------\n");
     Avl* avl = create_avl();
+    insert_avl(avl, 1);
     insert_avl(avl, 1);
     insert_avl(avl, 2);
     insert_avl(avl, 3);

@@ -33,13 +33,15 @@ BstNode* search_node_bst(BstNode* node, elem x) {
     return curr;
 }
 
-BstNode* insert_node_bst(BstNode *node, elem x){
+BstNode* insert_node_bst(BstNode *node, elem x, bool* error){
     if (node == NULL) return create_node_bst(x); 
   
     if (x < node->content) 
-        node->left  = insert_node_bst(node->left, x); 
+        node->left  = insert_node_bst(node->left, x, error);
     else if (x > node->content) 
-        node->right = insert_node_bst(node->right, x);    
+        node->right = insert_node_bst(node->right, x, error);
+    else
+        *error = true;   
   
     return node; 
 } 
@@ -54,13 +56,16 @@ BstNode* get_greatest_left(BstNode* node) {
     return target;
 }
 
-BstNode* remove_node_bst(BstNode* node, elem x)  {
-    if (node == NULL) return NULL;
+BstNode* remove_node_bst(BstNode* node, elem x, bool* error)  {
+    if (node == NULL) {
+        *error = true;
+        return NULL;
+    }
   
     if (x < node->content) 
-        node->left = remove_node_bst(node->left, x);  
+        node->left = remove_node_bst(node->left, x, error);  
     else if (x > node->content) 
-        node->right = remove_node_bst(node->right, x); 
+        node->right = remove_node_bst(node->right, x, error); 
     else { 
         int children = amount_of_children(node);
         BstNode* aux;
@@ -77,7 +82,7 @@ BstNode* remove_node_bst(BstNode* node, elem x)  {
   
         aux = get_greatest_left(node);
         node->content = aux->content;
-        node->right = remove_node_bst(node->right, aux->content);
+        node->right = remove_node_bst(node->right, aux->content, error);
         node->left = NULL;
         free(aux);
     
@@ -110,16 +115,20 @@ void destroy_bst(Bst* bst) {
 }
 
 bool search_bst(Bst* bst, elem x) {
-    BstNode* ans = search_node_bst(bst->root, x);
-    return (ans != NULL && ans->content == x);
+    BstNode* node = search_node_bst(bst->root, x);
+    return (node != NULL && node->content == x);
 }
 
-void insert_bst(Bst* bst, elem x) {
-    bst->root = insert_node_bst(bst->root, x);
+bool insert_bst(Bst* bst, elem x) {
+    bool error = false;
+    bst->root = insert_node_bst(bst->root, x, &error);
+    return error;
 }
 
-void remove_bst(Bst* bst, elem x) {
-    bst->root = remove_node_bst(bst->root, x);
+bool remove_bst(Bst* bst, elem x) {
+    bool error = false;
+    bst->root = remove_node_bst(bst->root, x, &error);
+    return error;
 }
 
 void print_bst(Bst* bst) {

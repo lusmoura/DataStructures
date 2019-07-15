@@ -17,9 +17,9 @@ typedef struct _bst {
 } Bst;
 
 Bst* create_bst();
-void insert_bst(Bst* bst, elem x);
+bool insert_bst(Bst* bst, elem x);
 bool search_bst(Bst* bst, elem x);
-void remove_bst(Bst* bst, elem x);
+bool remove_bst(Bst* bst, elem x);
 void print_bst(Bst* bst);
 void destroy_bst(Bst* bst);
 
